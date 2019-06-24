@@ -3,6 +3,13 @@
 <div class="containerContent">
     <h1>EAT-DA-BURGER</h1>
 
+    <form>
+        <div class="form-group">
+            <input type="text" requirede placeholder="Add a burger" class="form-control" name="burger_name">
+        </div>
+        <button type="submit" class="btn btn-default">Add burger</button>
+    </form>
+
     <div class="content-burger">
         {{#each burgers}}
         <div class="content-burger_list" id={{id}}>
