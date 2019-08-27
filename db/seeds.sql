@@ -1,8 +1,4 @@
-INSERT INTO burgers(burger_name, is_favorite)
-VALUES("Donald Burger", false);
-
-INSERT INTO burgers(burger_name, is_favorite)
-VALUES("Pistache Burger", false);
-
-INSERT INTO burgers(burger_name, is_favorite)
-VALUES("Moulen Burger", true);
+INSERT INTO burgers (burger_name) VALUES ('Foot Feta-ish Burger');
+INSERT INTO burgers (burger_name) VALUES ('Texas Chainsaw Massa-Curd Burger');
+INSERT INTO burgers (burger_name) VALUES ('Paranormal Pepper-Jack-Tivity Burger');
+INSERT INTO burgers (burger_name) VALUES ('Bohemian Radishy Burger');
