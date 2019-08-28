@@ -12,13 +12,13 @@ router.get("/", function(req, res) {
   // express cb res by calling burger.selectAllBurgers
   burger.selectAllBurgers(function(burgerData) {
     console.log(burgerData);
-    res.render("index");
+    res.render("index", { burgerData });
     // return burger_data, render to index w/ handlebar
     // res.render("index", { burger_data: burgerData });
   });
 });
 
-// // POST route [create]
+// POST route [create]
 // // creating means it'll be req.body
 // router.post("/", function(req, res) {
 //   // take request obj and use it as input
@@ -30,16 +30,16 @@ router.get("/", function(req, res) {
 //   });
 // });
 
-// // PUT route [update]
-// // if we're isolating by id, it needs to be req.params
-// router.put("/:id", function(req, res) {
-//   burger.updateBurger(req.params.id, function(result) {
-//     // render to index w/ handle
-//     console.log(result);
-//     // send back response
-//     res.sendStatus(200);
-//   });
-// });
+// PUT route [update]
+// if we're isolating by id, it needs to be req.params
+router.put("/burgers/update", function(req, res) {
+  burger.updateBurger(req.params.id, function(result) {
+    // render to index w/ handle
+    console.log(result);
+    // send back response
+    res.sendStatus(200);
+  });
+});
 
-// // Export router
+// Export router
 module.exports = router;

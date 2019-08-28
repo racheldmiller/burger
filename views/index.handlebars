@@ -15,7 +15,8 @@
         {{!-- Half of column for uneaten --}}
         <div class="col-md-6 text-center" class="task">
             <div class="row">
-                {{#each burger_data}}
+                {{!-- Loop through burger data for each piece of burger data --}}
+                {{#each burgerData}}
                 {{#unless this.devoured}}
                 <div class="col-md-9 text center">
                     <pre>
@@ -24,8 +25,12 @@
                 </div>
                 <div class="col-md-3 text-center">
                     <form class="devour-form-button-size">
-                        <input input type="hidden" class="burger_id" type="text" value={{this.id}}><br>
-                        <button type="submit" class="btn btn-default">Devour it!</button>
+                        <form method="POST" action="/burgers/update?_method=PUT" class="button-size">
+                            <input input type="hidden" class="burger_id" type="text" value={{this.id}}><br>
+                            <br>
+                            {{!-- Create button to send it back to server --}}
+                            <button type="submit" class="btn btn-default">Devour it!</button>
+                        </form>
                     </form>
                 </div>
                 {{/unless}}
@@ -34,7 +39,7 @@
         </div>
         {{!-- Other half for devoured --}}
         <div class="col-md-6 text-center" class="task">
-            {{#each burger_data}}
+            {{#each burgerData}}
             {{#if this.devoured}}
             <input class="form-control" type="text" placeholder="{{this.id}} . {{this.burger_name}}" readonly>
             {{/if}}
@@ -42,3 +47,7 @@
         </div>
     </div>
 </div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 text center" </div> </div> {{!-- See 14:22 for video --}}
