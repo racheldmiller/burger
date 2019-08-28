@@ -8,22 +8,22 @@
 <div class="container">
     <div class="row">
         {{!-- Center --}}
-        <div class="col-md-12 text-center" id="top">
+        <div class="col-xs-12 text-center" id="top">
             {{!-- Insert an image from assets/images if I want to --}}
             <h1>Issa Burger!!!</h1>
         </div>
         {{!-- Half of column for uneaten --}}
-        <div class="col-md-6 text-center" class="task">
+        <div class="col-xs-6 text-center" class="task">
             <div class="row">
                 {{!-- Loop through burger data for each piece of burger data --}}
                 {{#each burgerData}}
                 {{#unless this.devoured}}
-                <div class="col-md-9 text center">
+                <div class="col-xs-9 text center">
                     <pre>
                             {{this.id}}. {{this.burger_name}}
                         </pre>
                 </div>
-                <div class="col-md-3 text-center">
+                <div class="col-xs-3 text-center">
                     <form class="devour-form-button-size">
                         <form method="POST" action="/burgers/update?_method=PUT" class="button-size">
                             <input input type="hidden" class="burger_id" type="text" value={{this.id}}><br>
@@ -38,7 +38,7 @@
             </div>
         </div>
         {{!-- Other half for devoured --}}
-        <div class="col-md-6 text-center" class="task">
+        <div class="col-xs-6 text-center" class="task">
             {{#each burgerData}}
             {{#if this.devoured}}
             <input class="form-control" type="text" placeholder="{{this.id}} . {{this.burger_name}}" readonly>
@@ -48,6 +48,17 @@
     </div>
 </div>
 
+{{!-- Create a form to post a burger --}}
 <div class="container">
     <div class="row">
-        <div class="col-xs-12 text center" </div> </div> {{!-- See 14:22 for video --}}
+        <div class="col-xs-12 text center enter_section">
+            <form action="/burgers/create" method="POST">
+                <input type="text" name="burger_name" class="form-control" value="" id="enter_text">
+                <button type="submit" class="btn btn-primary" id="text-enter-button">SUBMIT</button>
+            </form>
+            <p>Enter a burger you'd like to eat... if you dare.</p>
+        </div>
+    </div>
+</div>
+
+{{!-- See 14:22 for video --}}

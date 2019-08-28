@@ -19,16 +19,16 @@ router.get("/", function(req, res) {
 });
 
 // POST route [create]
-// // creating means it'll be req.body
-// router.post("/", function(req, res) {
-//   // take request obj and use it as input
-//   burger.createBurger(req.body.burger_name, function(result) {
-//     // return result to console
-//     console.log(result);
-//     // render to index w/ handle
-//     res.redirect("/");
-//   });
-// });
+// creating means it'll be req.body
+router.post("/", function(req, res) {
+  // take request obj and use it as input
+  burger.createBurger(req.body.burger_name, function(result) {
+    // return result to console
+    console.log(result);
+    // render to index w/ handle
+    res.redirect("/");
+  });
+});
 
 // PUT route [update]
 // if we're isolating by id, it needs to be req.params

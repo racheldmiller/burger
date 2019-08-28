@@ -4,25 +4,25 @@
 var connection = require("./connection.js");
 
 // ------------------- HELPER FUNCTIONS FOR SQL SYNTAX --------------------------
-// // Print question marks
-// function printQuestionMarks(num) {
-//   var arr = [];
+// Print question marks
+function printQuestionMarks(num) {
+  var arr = [];
 
-//   for (var i = 0; i < num; i++) {
-//     arr.push("?");
-//   }
-//   return arr.toString();
-// }
+  for (var i = 0; i < num; i++) {
+    arr.push("?");
+  }
+  return arr.toString();
+}
 
-// // Obj to Sql
-// function objToSql(ob) {
-//   var arr = [];
+// Obj to Sql
+function objToSql(ob) {
+  var arr = [];
 
-//   for (var key in ob) {
-//     arr.push(key + "=" + ob[key]);
-//   }
-//   return arr.toString();
-// }
+  for (var key in ob) {
+    arr.push(key + "=" + ob[key]);
+  }
+  return arr.toString();
+}
 
 // ---------------------- ORM SQL STATEMENTS [CRUD...ish] -----------------------
 
