@@ -1,21 +1,21 @@
-// // --------------------------- DEPENDENCIES ------------------------------
+// --------------------------- DEPENDENCIES ------------------------------
 var express = require("express");
 var router = express.Router();
 
-// // Import model to use its db functions
-// var burger = require("../models/burger.js");
+// Import model to use its db functions
+var burger = require("../models/burger.js");
 
-// // ---------------------------- ROUTER.METHOD -------------------------------
-// // GET route [read]
+// ---------------------------- ROUTER.METHOD -------------------------------
+// GET route [read]
 router.get("/", function(req, res) {
-  res.render("index");
   console.log("Successfully linked this file to server.js!");
-  //   // express cb res by calling burger.selectAllBurgers
-  //   burger.selectAllBurgers(function(burgerData) {
-  //     console.log(burgerData);
-  //     // return burger_data, render to index w/ handlebar
-  //     res.render("index", { burger_data: burgerData });
-  //   });
+  // express cb res by calling burger.selectAllBurgers
+  burger.selectAllBurgers(function(burgerData) {
+    console.log(burgerData);
+    res.render("index");
+    // return burger_data, render to index w/ handlebar
+    // res.render("index", { burger_data: burgerData });
+  });
 });
 
 // // POST route [create]
