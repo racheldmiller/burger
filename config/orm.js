@@ -1,82 +1,84 @@
-// Import MySQL connection
-var connection = require("./connection.js");
+// ORM = OBJECT RELATIONAL MAPPER
 
-// ------------------- HELPER FUNCTIONS FOR SQL SYNTAX --------------------------
-// Print question marks
-function printQuestionMarks(num) {
-  var arr = [];
+// // Import MySQL connection
+// var connection = require("./connection.js");
 
-  for (var i = 0; i < num; i++) {
-    arr.push("?");
-  }
-  return arr.toString();
-}
+// // ------------------- HELPER FUNCTIONS FOR SQL SYNTAX --------------------------
+// // Print question marks
+// function printQuestionMarks(num) {
+//   var arr = [];
 
-// Obj to Sql
-function objToSql(ob) {
-  var arr = [];
+//   for (var i = 0; i < num; i++) {
+//     arr.push("?");
+//   }
+//   return arr.toString();
+// }
 
-  for (var key in ob) {
-    arr.push(key + "=" + ob[key]);
-  }
-  return arr.toString();
-}
+// // Obj to Sql
+// function objToSql(ob) {
+//   var arr = [];
 
-// ---------------------- ORM SQL STATEMENTS [CRUD...ish] -----------------------
+//   for (var key in ob) {
+//     arr.push(key + "=" + ob[key]);
+//   }
+//   return arr.toString();
+// }
 
-var orm = {
-  // READ ALL BURGERS
-  selectAllBurgers: function(tableInput, cb) {
-    var queryString = "SELECT * FROM " + tableInput + ";";
-    connection.query(queryString, function(err, result) {
-      if (err) {
-        throw err;
-      }
-      cb(result);
-    });
-  },
+// // ---------------------- ORM SQL STATEMENTS [CRUD...ish] -----------------------
 
-  // CREATE A BURGER
-  createBurger: function(table, cols, vals, cb) {
-    var queryString = "INSERT INTO " + table;
+// var orm = {
+//   // READ ALL BURGERS
+//   selectAllBurgers: function(tableInput, cb) {
+//     var queryString = "SELECT * FROM " + tableInput + ";";
+//     connection.query(queryString, function(err, result) {
+//       if (err) {
+//         throw err;
+//       }
+//       cb(result);
+//     });
+//   },
 
-    queryString += " (";
-    queryString += cols.toString();
-    queryString += ") ";
-    queryString += "VALUES (";
-    queryString += printQuestionMarks(vals.length);
-    queryString += ") ";
+//   // CREATE A BURGER
+//   createBurger: function(table, cols, vals, cb) {
+//     var queryString = "INSERT INTO " + table;
 
-    console.log(queryString);
+//     queryString += " (";
+//     queryString += cols.toString();
+//     queryString += ") ";
+//     queryString += "VALUES (";
+//     queryString += printQuestionMarks(vals.length);
+//     queryString += ") ";
 
-    connection.query(queryString, vals, function(err, result) {
-      if (err) {
-        throw err;
-      }
-      cb(result);
-    });
-  },
+//     console.log(queryString);
 
-  // UPDATE A BURGER
-  updateBurger: function(table, objColVals, condition, cb) {
-    // objColVals = columns & values to update
-    // i.e. {name: Lassie, sleepy: true}
-    var queryString = "UPDATE " + table;
+//     connection.query(queryString, vals, function(err, result) {
+//       if (err) {
+//         throw err;
+//       }
+//       cb(result);
+//     });
+//   },
 
-    queryString += " SET ";
-    queryString += objToSql(objColVals);
-    queryString += " WHERE ";
-    queryString += condition;
+//   // UPDATE A BURGER
+//   updateBurger: function(table, objColVals, condition, cb) {
+//     // objColVals = columns & values to update
+//     // i.e. {name: Lassie, sleepy: true}
+//     var queryString = "UPDATE " + table;
 
-    console.log(queryString);
-    connection.query(queryString, function(err, result) {
-      if (err) {
-        throw err;
-      }
-      cb(result);
-    });
-  }
-};
+//     queryString += " SET ";
+//     queryString += objToSql(objColVals);
+//     queryString += " WHERE ";
+//     queryString += condition;
 
-// Export ORM for model
-module.exports = orm;
+//     console.log(queryString);
+//     connection.query(queryString, function(err, result) {
+//       if (err) {
+//         throw err;
+//       }
+//       cb(result);
+//     });
+//   }
+// };
+
+// // Export ORM for model
+// module.exports = orm;

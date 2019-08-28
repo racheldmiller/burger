@@ -1,24 +1,4 @@
-{{!-- for loop --}}
+{{!-- Majority of Handlebars code goes here --}}
 
-<div class="containerContent">
-    <h1>EAT-DA-BURGER</h1>
-
-    <form>
-        <div class="form-group">
-            <input type="text" requirede placeholder="Add a burger" class="form-control" name="burger_name">
-        </div>
-        <button type="submit" class="btn btn-default">Add burger</button>
-    </form>
-
-    <div class="content-burger">
-        {{#each burgers}}
-        <div class="content-burger_list" id={{id}}>
-            <img scr="burgerimage.jpg" alt"">
-            <p>{{burger_name}}</p>
-            <button class="btn btn-default favorites" data-id="{{id}}" data-state"{{is_favorite}}">
-                {{#if is_favorite}} unfavorite {{else}} add to Favorites {{/if}}
-            </button>
-        </div>
-        {{/each}}
-    </div>
-</div>
+{{!-- TESTING --}}
+<p>YASSSS, YOU SUCCESSFULLY CONNECTED TO THE SERVER!</p>
