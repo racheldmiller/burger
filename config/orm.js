@@ -1,7 +1,7 @@
 // ORM = OBJECT RELATIONAL MAPPER
 
 // Import MySQL connection
-var connection = require("./connection.js");
+var connection = require("../config/connection.js");
 
 // ------------------- HELPER FUNCTIONS FOR SQL SYNTAX --------------------------
 // Print question marks
@@ -25,11 +25,13 @@ function objToSql(ob) {
 }
 
 // ---------------------- ORM SQL STATEMENTS [CRUD...ish] -----------------------
+// a lot of this is boilerplate
 
 var orm = {
   // READ ALL BURGERS
-  selectAllBurgers: function(tableInput, cb) {
-    var queryString = "SELECT * FROM " + tableInput + ";";
+  // tableInput
+  selectAllBurgers: function(table, cb) {
+    var queryString = "SELECT * FROM " + table + ";";
     connection.query(queryString, function(err, result) {
       if (err) {
         throw err;
@@ -38,8 +40,8 @@ var orm = {
     });
   },
 
-  // CREATE A BURGER
-  createBurger: function(table, cols, vals, cb) {
+  // INSERT A BURGER
+  insertBurger: function(table, cols, vals, cb) {
     var queryString = "INSERT INTO " + table;
 
     queryString += " (";
@@ -62,7 +64,7 @@ var orm = {
   // UPDATE A BURGER
   updateBurger: function(table, objColVals, condition, cb) {
     // objColVals = columns & values to update
-    // i.e. {name: Lassie, sleepy: true}
+    // i.e. {name: Racho, sleepy: true}
     var queryString = "UPDATE " + table;
 
     queryString += " SET ";

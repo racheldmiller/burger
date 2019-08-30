@@ -8,8 +8,8 @@ var app = express();
 var PORT = process.env.PORT || 8080;
 
 app.use(express.static("public"));
-app.use(bodyParser.urlencoded({ extended: false }));
 // app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
 
 // Configure Express Handlebars
@@ -18,7 +18,7 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Need to reference routes
-var routes = require("./controllers/burgerController");
+var routes = require("./controllers/burgerController.js");
 app.use("/", routes); // Solve error by exporting controller file
 
 // Start our server so it can start listening

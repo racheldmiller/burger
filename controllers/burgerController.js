@@ -6,37 +6,46 @@ var router = express.Router();
 var burger = require("../models/burger.js");
 
 // ---------------------------- ROUTER.METHOD -------------------------------
-// GET route [read]
+
+// Landing page - goes directly to /burgers
 router.get("/", function(req, res) {
   console.log("Successfully linked this file to server.js!");
-  // express cb res by calling burger.selectAllBurgers
+  res.redirect("/burgers");
+});
+
+// NEED 3 ROUTES - GET, POST, PUT
+
+// GET route - read all of the burgers in db when loading page
+router.get("/burgers", function(req, res) {
+  // express cb res by calling burger.selectAllBurger
   burger.selectAllBurgers(function(burgerData) {
-    console.log(burgerData);
-    res.render("index", { burgerData });
-    // return burger_data, render to index w/ handlebar
-    // res.render("index", { burger_data: burgerData });
+    // returns burger_data, renders to index with handlebar
+    res.render("index", { burger_data: burgerData });
   });
 });
 
-// POST route [create]
-// creating means it'll be req.body
-router.post("/", function(req, res) {
-  // take request obj and use it as input
-  burger.createBurger(req.body.burger_name, function(result) {
-    // return result to console
+// POST route - page will refresh when burger is added
+// create = req.body
+router.post("/burgers/create", function(req, res) {
+  // input request to burger.insertBurger
+  burger.insertBurger(req.body.burger_name, function(result) {
     console.log(result);
-    // render to index w/ handle
     res.redirect("/");
   });
 });
 
-// PUT route [update]
-// if we're isolating by id, it needs to be req.params
-router.put("/burgers/update", function(req, res) {
+// PUT route - update status of burger
+// isolate by id = req.params
+router.put("/burgers/:id", function(req, res) {
+  // More appropriate in models/burger.js(?)
+  // var condition = "id = " + req.params.id;
+  // console.log("condition", condition)
+
+  // burger.updateBurger
   burger.updateBurger(req.params.id, function(result) {
-    // render to index w/ handle
+    // {devoured: true}
     console.log(result);
-    // send back response
+    // Send back AJAX 200 response -- req successfully processed on server
     res.sendStatus(200);
   });
 });
