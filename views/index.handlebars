@@ -1,5 +1,3 @@
-{{!-- NTS: DOUBLE-CHECK FORMATTING FOR THIS PAGE --}}
-
 {{!-- Majority of Handlebars code goes here --}}
 
 {{!-- TESTING --}}
@@ -7,58 +5,56 @@
 
 <div class="container">
     <div class="row">
-        {{!-- Center --}}
-        <div class="col-xs-12 text-center" id="top">
-            {{!-- Insert an image from assets/images if I want to --}}
-            <h1>Issa Burger!!!</h1>
+        <div class="col-md-12 text-center" id="title-bar">
+            <h1>WHEN LIFE THROWS YOU A BURGER, EAT IT!</h1>
+            {{!-- NTS: This image isn't working so far --}}
+            <img src="/public/images/unsplash_burger.jpg">
         </div>
-        {{!-- Half of column for uneaten --}}
-        <div class="col-xs-6 text-center" class="task">
+    </div>
+
+    <div class="post-burger-container">
+        <div class="row">
+            {{!-- enter_section --}}
+            <div class="col-md-12 text-center">
+                <h5>Enter a burger... if you dare.</h5>
+                <form action="/burgers/create" method="POST">
+                    {{!-- id="enter_text" value="" --}}
+                    <input type="text" placeholder="so hungry..." class="form-control" name="burger_name">
+                    <button type="submit" class="btn btn-primary" id="add-burger">WHO'S A GOOD BURGER?</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {{!-- Go through each burger in db --}}
+    <div class="container">
+        <div class="col-md-6 text-center" class="burger-list">
             <div class="row">
-                {{!-- Loop through burger data for each piece of burger data --}}
                 {{#each burgerData}}
-                {{#unless this.devoured}}
-                <div class="col-xs-9 text center">
-                    <pre>
-                            {{this.id}}. {{this.burger_name}}
-                        </pre>
+                {{#unless devoured}}
+                <div class="col-md-9 text-center">
+                    {{burger_name}}
                 </div>
-                <div class="col-xs-3 text-center">
-                    <form class="devour-form-button-size">
-                        <form method="POST" action="/burgers/update?_method=PUT" class="button-size">
-                            <input input type="hidden" class="burger_id" type="text" value={{this.id}}><br>
-                            <br>
-                            {{!-- Create button to send it back to server --}}
-                            <button type="submit" class="btn btn-default">Devour it!</button>
-                        </form>
+                <div class="col-md-3 text-center">
+                    {{!-- <form class="devour-form button-size"> --}}
+                    <button type="submit" class="btn btn-light" value={{id}} data-state={{devoured}}>Devour
+                        it!</button>
                     </form>
                 </div>
                 {{/unless}}
                 {{/each}}
             </div>
         </div>
-        {{!-- Other half for devoured --}}
-        <div class="col-xs-6 text-center" class="task">
+        <div class="col-md-6 text-center" class="ate-it">
             {{#each burgerData}}
-            {{#if this.devoured}}
-            <input class="form-control" type="text" placeholder="{{this.id}} . {{this.burger_name}}" readonly>
+            {{#if devoured}}
+            <li>{{this.burger_name}}</li>
             {{/if}}
             {{/each}}
         </div>
     </div>
 </div>
 
-{{!-- Create a form to post a burger --}}
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12 text center enter_section">
-            <form action="/burgers/create" method="POST">
-                <input type="text" name="burger_name" class="form-control" value="" id="enter_text">
-                <button type="submit" class="btn btn-primary" id="text-enter-button">SUBMIT</button>
-            </form>
-            <p>Enter a burger you'd like to eat... if you dare.</p>
-        </div>
-    </div>
 </div>
 
 {{!-- See 14:22 for video --}}
