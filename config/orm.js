@@ -25,12 +25,12 @@ function objToSql(ob) {
 }
 
 // ---------------------- ORM SQL STATEMENTS [CRUD...ish] -----------------------
-// a lot of this is boilerplate
+// BOILERPLATE
 
 var orm = {
   // READ ALL BURGERS
   // tableInput
-  selectAllBurgers: function(table, cb) {
+  selectAll: function(table, cb) {
     var queryString = "SELECT * FROM " + table + ";";
     connection.query(queryString, function(err, result) {
       if (err) {
@@ -41,7 +41,7 @@ var orm = {
   },
 
   // INSERT A BURGER
-  insertBurger: function(table, cols, vals, cb) {
+  insertOne: function(table, cols, vals, cb) {
     var queryString = "INSERT INTO " + table;
 
     queryString += " (";
@@ -62,7 +62,7 @@ var orm = {
   },
 
   // UPDATE A BURGER
-  updateBurger: function(table, objColVals, condition, cb) {
+  updateOne: function(table, objColVals, condition, cb) {
     // objColVals = columns & values to update
     // i.e. {name: Racho, sleepy: true}
     var queryString = "UPDATE " + table;

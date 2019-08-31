@@ -1,53 +1,63 @@
-{{!-- Majority of Handlebars code goes here --}}
+{{!-- <p>TESTING: YASSSS, YOU SUCCESSFULLY CONNECTED TO THE SERVER!</p> --}}
 
-{{!-- TESTING --}}
-{{!-- <p>YASSSS, YOU SUCCESSFULLY CONNECTED TO THE SERVER!</p> --}}
-
+{{!-- TOP OF PAGE: IMAGE, TITLE --}}
 <div class="container">
     <div class="row">
-        <div class="col-md-12 text-center" id="top-bar">
-            <img src="/assets/images/burger.png" alt="burger" />
-            <h1> Eat-Da-Burger! </h1>
+        <div class="col-md-12 text-center" id="head">
+            {{!-- Image isn't displaying properly --}}
+            <img src="../public/images/mae-mu-I7A_pHLcQK8-unsplash.jpg" alt="burger" />
+            <h1>WHEN LIFE GIVES YOU A BURGER, EAT IT!</h1>
         </div>
-        <div class="col-md-6 text-center" class="task">
+
+        {{!-- LEFT SIDE: UNEATEN BURGER OPTIONS --}}
+        <br>
+        <div class="col-md-6" class="state-burger">
             <div class="row">
+                <h2>Your Burger Options:</h2>
                 {{#each burger_data}}
                 {{#unless this.devoured}}
-                <div class="col-md-9 text-center">
+                <div class="col-md-9">
                     <pre>{{this.id}}. {{this.burger_name}}
 					</pre>
-                    <!-- {{this.Date}} -->
                 </div>
-                <div class="col-md-3 text-center">
-                    <form class="devour-form button-size">
-                        <input input type="hidden" class="burger_id" type="text" value={{this.id}}><br>
-                        <button type="submit" class="btn btn-default">Devour it!</button>
+                <div class="col-md-3">
+                    <form class="devour-burger button-size">
+                        <input input type="hidden" type="text" class="burger_id" value={{this.id}}><br>
+                        <button type="submit" class="btn btn-light">DEVOUR!</button>
                     </form>
                 </div>
                 {{/unless}}
                 {{/each}}
             </div>
         </div>
-        <div class="col-md-6 text-center" class="task">
+        {{!-- RIGHT SIDE: EATEN BURGERS --}}
+        <br>
+        <div class="col-md-6" class="state-burger">
+            <h2>Yummy in ze Tummy:</h2>
             {{#each burger_data}}
             {{#if this.devoured}}
-            <input class="form-control" type="text" placeholder="{{this.id}} . {{this.burger_name}}" readonly>
+            {{!-- should display text as muted --}}
+            <input class="form-control" type="text-muted">
             {{/if}}
             {{/each}}
         </div>
     </div>
 </div>
 
+{{!-- BELOW: FORM TO SUBMIT BURGER REQUESTS --}}
+<br>
 <div class="container">
     <div class="row">
-        <div class="col-md-12 text-center enter_section">
+        <div class="col-md-12 text-center">
             <form action="/burgers/create" method="POST">
-                <input type="text" class="form-control" name="burger_name" value="" id="enter_text">
-                <button type="submit" class="btn btn-primary" id="text-enter-button">Submit</button>
+                {{!-- ^ No need to do jQuery function in script.js --}}
+                <input type="text" placeholder="Can't get enough?" class="form-control" name="burger_name" value=""
+                    id="enter_text">
+                <button type="submit" class="btn btn-primary btn-lg btn-block" id="enter-text-button">Add Burger
+                    Option</button>
             </form>
-            <p>Enter a burger you want to eat Click the "Submit" button.</p>
+            <br>
+            <h4>Enter a burger... if you dare.</h4>
         </div>
     </div>
 </div>
-
-{{!-- See 14:22 for video --}}

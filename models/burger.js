@@ -1,18 +1,28 @@
 // Import ORM to create functions that'll interact w/ db
 var orm = require("../config/orm.js");
 
+// Reference naming conventions from orm.js
+// NTS: Citing objColVals, cols, vals from orm.js doesn't seem to work
+
+// Reminder: db table is called "burgers"
 var burger = {
-  selectAllBurgers: function(cb) {
-    orm.selectAllBurgers("burgers", function(res) {
+  // for GET : select all burgers
+  selectAll: function(cb) {
+    orm.selectAll("burgers", function(res) {
       cb(res);
     });
   },
-  insertBurger: function(name, cb) {
-    orm.insertBurger("burgers", ["burger_name", "devoured"], [name, false], cb);
+  // for POST : insert burger
+  insertOne: function(name, cb) {
+    orm.insertOne("burgers", ["burger_name", "devoured"], [name, false], cb);
   },
-  updateBurger: function(id, cb) {
+  // insertOne: function(cols, vals, cb) {
+  //   orm.insertOne("burgers", cols, vals, function(res) {
+  //   cb(res);
+  //   });
+  updateOne: function(id, cb) {
     var condition = "id=" + id;
-    orm.updateBurger(
+    orm.updateOne(
       "burgers",
       {
         devoured: true
@@ -21,28 +31,11 @@ var burger = {
       cb
     );
   }
+  // updateOne: function(objColVals, condition, cb) {
+  // orm.updateOne("burgers", objColVals, condition, function(res) {
+  // cb(res);
+  // });
 };
-
-// var burger = {
-//   // select all burgers
-//   selectAllBurgers: function(cb) {
-//     orm.selectAllBurgers("burgers", function(res) {
-//       cb(res);
-//     });
-//   },
-//   // insert (create) burger
-//   insertBurger: function(cols, vals, cb) {
-//     orm.insertBurger("burgers", cols, vals, function(res) {
-//       cb(res);
-//     });
-//   },
-//   // update burger
-//   updateBurger: function(objColVals, condition, cb) {
-//     orm.updateBurger("burgers,", objColVals, condition, function(res) {
-//       cb(res);
-//     });
-//   }
-// };
 
 // Export db functions for controller
 module.exports = burger;
