@@ -1,14 +1,14 @@
 # burger
 
 <h2>Play With This Yourself:</h2>
-Hello, <a href="https://heroku.com/">Heroku</a>.
+Hello, <a href="https://racho-burger-logger.herokuapp.com/">Heroku</a>.
 
 <h2>Overview:</h2>
 Type the name of a burger you'd like to eat. Click the "Add Burger Option" button and it'll appear in the "Your Burger Options" portion of the page. Click "DEVOUR!" next to the burger you'd like to eat. From there, it'll show up on the other side of the page, "Yummy in ze Tummy," as devoured.
 
 <h2>Technologies Used:</h2>
 MySQL | Node | Express | Handlebars | and a homemade ORM (yum!)
-... As well as HTML, CSS, JavaScript/jQuery.
+<br>... As well as HTML, CSS, JavaScript/jQuery.
 
 <h2>Small Victories:</h2>
 <ul><li>Burgers from the DB display.</li>
@@ -20,7 +20,7 @@ MySQL | Node | Express | Handlebars | and a homemade ORM (yum!)
 <li>More styling in general.</li></ul>
 
 <h2>... And if I'm feeling even more adventurous:</h2>
-<ul><li>User should be able to delete burgers. Maybe they changed their mind and don't want to eat a certain burger after all.</li>
+<ul><li>User should be able to delete burgers. Maybe they changed their mind and don't want to eat a certain burger after all.</li></ul>
 
 <h2>Learn More About Me!</h2>
 <ul><li><a href="https://linkedin.com/in/rachel-d-miller">LinkedIn</a></li>
