@@ -1,7 +1,7 @@
 # burger
 
 <h2>Play With This Yourself:</h2>
-Hello, <a href="https://heroku.com/>
+Hello, <a href="https://heroku.com/">Heroku</a>.
 
 <h2>Overview:</h2>
 Type the name of a burger you'd like to eat. Click the "Add Burger Option" button and it'll appear in the "Your Burger Options" portion of the page. Click "DEVOUR!" next to the burger you'd like to eat. From there, it'll show up on the other side of the page, "Yummy in ze Tummy," as devoured.
